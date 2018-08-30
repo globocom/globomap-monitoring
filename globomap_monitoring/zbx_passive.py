@@ -34,7 +34,7 @@ def send():
 
     zabbix_server = ZabbixSender(zabbix_server=ZBX_PASSIVE_SERVER,
                                  zabbix_port=int(ZBX_PASSIVE_PORT),
-                                 use_settings=None, chunk_size=2)
+                                 chunk_size=2)
 
     time_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
