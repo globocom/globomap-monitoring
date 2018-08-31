@@ -13,24 +13,24 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 """
-from pyzabbix import ZabbixMetric, ZabbixSender
-from datetime import datetime
-from globomap_monitoring.settings import ZBX_PASSIVE_SERVER
-from globomap_monitoring.settings import ZBX_PASSIVE_PORT
-from globomap_monitoring.settings import ZBX_PASSIVE_MONITOR
-
 import logging
+from datetime import datetime
+
+from pyzabbix import ZabbixMetric
+from pyzabbix import ZabbixSender
+
+from globomap_monitoring.settings import ZBX_PASSIVE_MONITOR
+from globomap_monitoring.settings import ZBX_PASSIVE_PORT
+from globomap_monitoring.settings import ZBX_PASSIVE_SERVER
 
 LOGGER = logging.getLogger(__name__)
 
 
-def send():
-    if (not ZBX_PASSIVE_SERVER or
-            not ZBX_PASSIVE_PORT or
-            not ZBX_PASSIVE_MONITOR):
-
-            LOGGER.error('Settings insufficient to passive monitoring')
-            return
+def send(monitor=None):
+    monitor = monitor if monitor else ZBX_PASSIVE_MONITOR
+    if not ZBX_PASSIVE_SERVER or not ZBX_PASSIVE_PORT or not monitor:
+        LOGGER.error('Settings insufficient to passive monitoring')
+        return
 
     zabbix_server = ZabbixSender(zabbix_server=ZBX_PASSIVE_SERVER,
                                  zabbix_port=int(ZBX_PASSIVE_PORT),
