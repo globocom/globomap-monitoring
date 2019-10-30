@@ -9,3 +9,8 @@ All of the environment variables below must be set for the application to work p
 | ZBX_PASSIVE_SERVER   | Zabbix server  | zabbix.yourdomain.com   |
 | ZBX_PASSIVE_PORT     | Zabbix port    | 10051                   |
 | ZBX_PASSIVE_MONITOR  | Zabbix monitor | passive_abc_monitor     |
+
+
+## Licensing
+
+GloboMap Monitoring Lib is under [Apache 2 License](./LICENSE)
